@@ -1,0 +1,37 @@
+#pagination {
+
+  .pagination {
+    li {
+      border-bottom: 0!important;
+      padding: 0!important;
+
+      a{
+        cursor: pointer;
+        color: #534463!important;
+      }
+
+      &.active{
+        a{
+          background-color: #534463;
+          border-color: #534463;
+
+          &:hover{
+            background-color: #534463;
+            border-color: #534463;
+          }
+        }
+      }
+    }
+
+    .disabled{
+      a{
+        color: #eaeaea!important;
+      }
+    }
+
+    & .active a{
+      color: white!important;
+    }
+
+  }
+}
