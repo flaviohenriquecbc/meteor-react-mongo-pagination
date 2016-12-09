@@ -21,7 +21,7 @@ $ meteor npm install --save react react-dom
 $ meteor npm install --save react react-addons-pure-render-mixin
 ```
 
-<h3>Enter on the project folder and execute the program:</h3>
+<h3>Execute the program:</h3>
 ```sh
 $ meteor
 ```
