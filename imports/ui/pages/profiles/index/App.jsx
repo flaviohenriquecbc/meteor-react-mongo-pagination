@@ -8,6 +8,21 @@ import Pager    from '../../../components/pager/Pager.jsx';
 
 const PROFILES_PER_PAGE   = 20;
 const VISIBLE_PAGES_PAGER = 3;
+const NR_NEXT_MONTHS      = 12
+const FILTERS             = [{
+                              name: 'studyField',
+                              values : ['s1', 's2', 's3', 's4', 's5', 's6', 's7'],
+                              type: 'checkbox',
+                              label: 'Study Field'
+                          },
+                          {
+                              name: 'startMonth',
+                              values : [...Array(NR_NEXT_MONTHS)].map((_, i) => { //get next 12 months
+                                          return moment().add(i++, 'months').format("MMM YYYY")
+                                        } ),
+                              type: 'radio',
+                              label: 'Start Month'
+                          }];
 
 // App component - represents the Profiles page
 export default class App extends Component {
@@ -15,32 +30,12 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    //get the next 12 months
-    let startMonths = [];
-    for(let i = 0; i <= 12; i++){
-      startMonths.push(moment().add(i, 'months').format("MMM YYYY"));
-    }
-
-    //define values of the filters
-    let filters = [{
-        name: 'studyField',
-        values : ['s1', 's2', 's3', 's4', 's5', 's6', 's7'],
-        type: 'checkbox',
-        label: 'Study Field'
-    },
-    {
-        name: 'startMonth',
-        values : startMonths,
-        type: 'radio',
-        label: 'Start Month'
-    }];
-
     //init
     this.state = {
       profiles: [],
       numberOfResults: undefined,
       numberTotalOfResults: 0,
-      filters: filters
+      filters: FILTERS
     };
 
     //get the total of profiles on the db
