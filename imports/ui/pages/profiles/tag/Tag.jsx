@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
+//represents the tag on the topbar
 export default class Tag extends Component{
 
   handleRemoveTag() {
@@ -15,3 +16,9 @@ export default class Tag extends Component{
     );
   }
 }
+
+Tag.propTypes = {
+  // This component gets the task to display through a React prop.
+  // We can use propTypes to indicate it is required
+  label: React.PropTypes.string.isRequired,
+};

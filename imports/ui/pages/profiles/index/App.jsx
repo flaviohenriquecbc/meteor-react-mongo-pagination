@@ -9,7 +9,7 @@ import Pager    from '../../../components/pager/Pager.jsx';
 const PROFILES_PER_PAGE   = 20;
 const VISIBLE_PAGES_PAGER = 3;
 
-// App component - represents the whole app
+// App component - represents the Profiles page
 export default class App extends Component {
 
   constructor(props) {
@@ -43,6 +43,7 @@ export default class App extends Component {
       filters: filters
     };
 
+    //get the total of profiles on the db
     Meteor.call('profiles.getTotal', (error, result) => {
         if(!error){
             this.setState({
@@ -51,6 +52,7 @@ export default class App extends Component {
         }
     });
 
+    //get the profiles following the defined filters
     this.getProfiles(this.props.page, this.sanitize(this.props.params));
   }
 
@@ -88,10 +90,12 @@ export default class App extends Component {
     return chosenFilters;
   }
 
+  //get filters change, change url
   handleFiltersChanged(chosenFilters){
     this.goPage(0, chosenFilters);
   }
 
+  //get page change, change url
   handlePageChanged(pageNumber){
     this.goPage(pageNumber, this.sanitize(this.props.params));
   }
@@ -99,22 +103,23 @@ export default class App extends Component {
   componentWillUpdate(nextProps, nextState){
     let urlBefore = this.props.page + this.objectSerializer(this.props.params);
     let urlAfter = nextProps.page + this.objectSerializer(nextProps.params);
+    //check if the url is different, if so, change the content
     if(urlBefore != urlAfter)
       this.getProfiles(nextProps.page, this.sanitize(nextProps.params));
   }
 
+  //change the url of the app
   goPage(pageNumber, chosenFilters){
       Router.go('/profiles/' + pageNumber + this.objectSerializer(chosenFilters));
   }
 
+  //get the profiles based on the pages and filters
   getProfiles(page, chosenFilters){
     let skip = page * PROFILES_PER_PAGE;
     let limit = PROFILES_PER_PAGE;
     handler = Meteor.subscribe("profiles", chosenFilters, skip, limit, {
       onReady: () => {
-
         let profiles = Profiles.find().fetch();
-
         Meteor.call('profiles.getTotalFiltered', chosenFilters, (error, result) => {
             if(!error){
                 this.setState({

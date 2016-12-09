@@ -126,3 +126,10 @@ export default class TopBar extends Component {
     );
   }
 }
+
+TopBar.propTypes = {
+  // This component gets the task to display through a React prop.
+  // We can use propTypes to indicate it is required
+  chosenFilters: React.PropTypes.object.isRequired,
+  filters: React.PropTypes.array.isRequired,
+};
