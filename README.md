@@ -2,26 +2,24 @@
 
 This is an application to filter a list of profiles using ReactJS, Meteor, LESS, MongoDB, ES6, Simple-Schema and Iron Meteor.
 
-<h3>Requirements</h3>
-<ul>
-  <li>Meteor (https://www.meteor.com/)</li>
-  <li>NPM (https://www.npmjs.com/)</li>
-</ul>
+### Requirements
+* Meteor (https://www.meteor.com/)
+* NPM (https://www.npmjs.com/)
 
-<h3>Running the project</h3>
+### Running the project
 Clone this project:
 ```sh
 $ git clone https://github.com/flaviohenriquecbc/meteor-react-mongo-pagination.git
 ```
 
-<h3>Install some dependencies:</h3>
+### Install some dependencies
 ```sh
 $ meteor npm install --save babel-runtime
 $ meteor npm install --save react react-dom
 $ meteor npm install --save react react-addons-pure-render-mixin
 ```
 
-<h3>Execute the program:</h3>
+### Execute the program
 ```sh
 $ meteor
 ```
