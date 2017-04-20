@@ -25,3 +25,4 @@ $ meteor
 ```
 
 Tadaa! Now you can filter the profiles: http://localhost:3000
+
